@@ -65,6 +65,8 @@ function formatSize(size) {
   return formattedSize;
 }
 
+function validateIndex() {}
+
 function handleColoredBorderSizeChange(size) {
   const formattedSize = formatSize(size);
   if (!formattedSize) {

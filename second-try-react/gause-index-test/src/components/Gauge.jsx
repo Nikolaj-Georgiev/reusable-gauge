@@ -54,6 +54,8 @@ export default function Gauge({ value, size }) {
       formattedSize === 'small' ? 11.5 : formattedSize === 'medium' ? 9.5 : 7.5;
     const coloredBorderLeft =
       formattedSize === 'small' ? 11.5 : formattedSize === 'medium' ? 9.5 : 7.5;
+    const coloredBorderBorder =
+      formattedSize === 'small' ? 0.3 : formattedSize === 'medium' ? 0.4 : 0.5;
 
     setColoredBorderSize((prevSize) => ({
       ...prevSize,
@@ -61,6 +63,7 @@ export default function Gauge({ value, size }) {
       height: coloredBorderHeight,
       top: coloredBorderTop,
       left: coloredBorderLeft,
+      border: coloredBorderBorder,
     }));
 
     document.documentElement.style.setProperty(
@@ -78,6 +81,10 @@ export default function Gauge({ value, size }) {
     document.documentElement.style.setProperty(
       '--dynamic-colored-border-left',
       `${coloredBorderLeft}rem`
+    );
+    document.documentElement.style.setProperty(
+      '--dynamic-colored-border-border',
+      `${coloredBorderBorder}rem`
     );
   }
 

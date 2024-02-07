@@ -28,6 +28,7 @@
   --dynamic-colored-border-height: 7rem;
   --dynamic-colored-border-top: 11.5rem;
   --dynamic-colored-border-left: 11.5rem;
+  --dynamic-colored-border-border: 0.3rem;
   --dynamic--colored-border-color: var(--gauge-0);
 }
 
@@ -112,7 +113,8 @@
   position: absolute;
   top: var(--dynamic-colored-border-top);
   left: var(--dynamic-colored-border-left);
-  border: 0.5rem solid var(--dynamic--colored-border-color);
+  border: var(--dynamic-colored-border-border) solid
+    var(--dynamic--colored-border-color);
   border-radius: 50%;
   z-index: 3;
 }

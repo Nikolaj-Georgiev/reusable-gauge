@@ -18,12 +18,12 @@ export default function Gauge({ value, size }) {
   return (
     <>
       <div className={classes.container}>
-        <div class='center-content'>
+        <div className='center-content'>
           <p>0</p>
         </div>
-        <div class='gauge-center-hide'></div>
-        <div class='arrow-wrapper index-0'>
-          <div class='arrow'></div>
+        <div className={classes['center-hide']}></div>
+        <div className='arrow-wrapper index-0'>
+          <div className='arrow'></div>
         </div>
         <div className={containerSizeCss}>
           <div className={`${classes.piece} ${classes['piece--00']}`}></div>

@@ -8,27 +8,78 @@ export default function Gauge({ value, size }) {
   const [gaugeSize, setGaugeSize] = useState('');
   const [centerCoverSize, setCenterCoverSize] = useState('');
   const [indexValue, setIndexValue] = useState(0);
+  const [coloredBorderSize, setColoredBorderSize] = useState({
+    width: 7,
+    height: 7,
+    top: 11.5,
+    left: 11.5,
+  });
 
   useEffect(() => {
     const formattedSize = size?.toLowerCase().trim();
     if (['small', 'medium', 'large'].includes(formattedSize)) {
       setGaugeSize(formattedSize);
       setCenterCoverSize(formattedSize);
-    } else {
-      console.error('Invalid size! Should be "small", "medium", or "large"!');
     }
+    // else {
+    //   console.error('Invalid size! Should be "small", "medium", or "large"!');
+    // }
 
     if (Number.isInteger(value) && value >= 0 && value <= 10) {
       setIndexValue(value);
-    } else {
-      console.error(
-        'Invalid index: value should be a whole number in the range 0-10'
-      );
     }
+    // else {
+    //   console.error(
+    //     'Invalid index: value should be a whole number in the range 0-10'
+    //   );
+    // }
+    handleSizeChange(size);
   }, [size, value]);
 
   const gaugeSizeCss = `${classes.gauge} ${classes[gaugeSize]}`;
   const centerCoverCss = `${classes['center-hide']} ${classes[centerCoverSize]}`;
+  const coloredBorderCss = `${classes['colored-border']}`;
+
+  function handleSizeChange(size) {
+    const formattedSize = size?.toLowerCase().trim();
+    if (!['small', 'medium', 'large'].includes(formattedSize)) {
+      return null;
+    }
+
+    const coloredBorderWidth =
+      formattedSize === 'small' ? 7 : formattedSize === 'medium' ? 11 : 15;
+    const coloredBorderHeight =
+      formattedSize === 'small' ? 7 : formattedSize === 'medium' ? 11 : 15;
+    const coloredBorderTop =
+      formattedSize === 'small' ? 11.5 : formattedSize === 'medium' ? 9.5 : 7.5;
+    const coloredBorderLeft =
+      formattedSize === 'small' ? 11.5 : formattedSize === 'medium' ? 9.5 : 7.5;
+
+    setColoredBorderSize((prevSize) => ({
+      ...prevSize,
+      width: coloredBorderWidth,
+      height: coloredBorderHeight,
+      top: coloredBorderTop,
+      left: coloredBorderLeft,
+    }));
+
+    document.documentElement.style.setProperty(
+      '--dynamic-colored-border-width',
+      `${coloredBorderWidth}rem`
+    );
+    document.documentElement.style.setProperty(
+      '--dynamic-colored-border-height',
+      `${coloredBorderHeight}rem`
+    );
+    document.documentElement.style.setProperty(
+      '--dynamic-colored-border-top',
+      `${coloredBorderTop}rem`
+    );
+    document.documentElement.style.setProperty(
+      '--dynamic-colored-border-left',
+      `${coloredBorderLeft}rem`
+    );
+  }
 
   return (
     <>
@@ -37,7 +88,7 @@ export default function Gauge({ value, size }) {
           <p>0</p>
         </div>
         <div className={centerCoverCss}></div>
-        <div className='arrow-wrapper index-0'>
+        <div className={`${coloredBorderCss} index-0`}>
           <div className='arrow'></div>
         </div>
         <div className={gaugeSizeCss}>

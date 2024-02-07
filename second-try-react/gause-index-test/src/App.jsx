@@ -1,4 +1,4 @@
-import ComponentName from './components/ComponentName';
+// import ComponentName from './components/ComponentName';
 import Gauge from './components/Gauge';
 import { useState } from 'react';
 

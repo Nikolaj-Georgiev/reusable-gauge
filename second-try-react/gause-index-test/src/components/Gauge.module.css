@@ -23,6 +23,12 @@
   --gauge-08: #61250f;
   --gauge-09: #631c0f;
   --gauge-010: #65120f;
+
+  --dynamic-colored-border-width: 7rem;
+  --dynamic-colored-border-height: 7rem;
+  --dynamic-colored-border-top: 11.5rem;
+  --dynamic-colored-border-left: 11.5rem;
+  --dynamic--colored-border-color: var(--gauge-0);
 }
 
 .container {
@@ -100,8 +106,18 @@
   left: 5.5rem;
 }
 
-/* Colors and structure of the gauge */
+.colored-border {
+  width: var(--dynamic-colored-border-width);
+  height: var(--dynamic-colored-border-height);
+  position: absolute;
+  top: var(--dynamic-colored-border-top);
+  left: var(--dynamic-colored-border-left);
+  border: 0.5rem solid var(--dynamic--colored-border-color);
+  border-radius: 50%;
+  z-index: 3;
+}
 
+/* Colors and structure of the gauge */
 .piece {
   position: absolute;
   width: 100%;

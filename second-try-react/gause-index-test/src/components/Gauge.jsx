@@ -5,20 +5,12 @@ import { useState, useEffect } from 'react';
 import classes from './Gauge.module.css';
 
 export default function Gauge({ value, size }) {
-  const [gaugeSize, setGaugeSize] = useState('');
   const [centerCoverSize, setCenterCoverSize] = useState('');
   const [indexValue, setIndexValue] = useState(0);
-  // const [coloredBorderSize, setColoredBorderSize] = useState({
-  //   width: 7,
-  //   height: 7,
-  //   top: 11.5,
-  //   left: 11.5,
-  // });
 
   useEffect(() => {
     const formattedSize = size?.toLowerCase().trim();
     if (['small', 'medium', 'large'].includes(formattedSize)) {
-      setGaugeSize(formattedSize);
       setCenterCoverSize(formattedSize);
     }
     // else {
@@ -33,10 +25,11 @@ export default function Gauge({ value, size }) {
     //     'Invalid index: value should be a whole number in the range 0-10'
     //   );
     // }
+    handleGaugeSizeChange(size);
     handleColoredBorderSizeChange(size);
   }, [size, value]);
 
-  const gaugeSizeCss = `${classes.gauge} ${classes[gaugeSize]}`;
+  const gaugeSizeCss = `${classes.gauge}`;
   const centerCoverCss = `${classes['center-hide']} ${classes[centerCoverSize]}`;
   const coloredBorderCss = `${classes['colored-border']}`;
 
@@ -68,6 +61,9 @@ export default function Gauge({ value, size }) {
   );
 }
 
+/////////////////////////////////////////////
+// This are helper functions and probably will not stay in the component. You may want to bring them from outside, therefore I don't use useCallback for them.
+
 function handleColoredBorderSizeChange(size) {
   const formattedSize = formatSize(size);
   if (!formattedSize) {
@@ -91,6 +87,29 @@ function handleColoredBorderSizeChange(size) {
     { name: '--dynamic-colored-border-top', value: coloredBorderTop },
     { name: '--dynamic-colored-border-left', value: coloredBorderLeft },
     { name: '--dynamic-colored-border-border', value: coloredBorderBorder },
+  ]);
+}
+
+function handleGaugeSizeChange(size) {
+  const formattedSize = formatSize(size);
+  if (!formattedSize) {
+    return null;
+  }
+
+  const gaugeWidth =
+    formattedSize === 'small' ? 10 : formattedSize === 'medium' ? 15 : 20;
+  const gaugeHeight =
+    formattedSize === 'small' ? 10 : formattedSize === 'medium' ? 15 : 20;
+  const gaugeTop =
+    formattedSize === 'small' ? 10 : formattedSize === 'medium' ? 7.5 : 5;
+  const gaugeLeft =
+    formattedSize === 'small' ? 10 : formattedSize === 'medium' ? 7.5 : 5;
+
+  dynamicUpdateStyleProperty([
+    { name: '--dynamic-gauge-width', value: gaugeWidth },
+    { name: '--dynamic-gauge-height', value: gaugeHeight },
+    { name: '--dynamic-gauge-top', value: gaugeTop },
+    { name: '--dynamic-gauge-left', value: gaugeLeft },
   ]);
 }
 

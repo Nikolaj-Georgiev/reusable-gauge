@@ -71,25 +71,25 @@
   left: var(--dynamic-gauge-left);
 }
 
-.gauge.small {
+/* .gauge.small {
   width: 10rem;
   height: 10rem;
   top: 10rem;
   left: 10rem;
-}
-.gauge.medium {
+} */
+/* .gauge.medium {
   width: 15rem;
   height: 15rem;
   top: 7.5rem;
   left: 7.5rem;
-}
+} */
 
-.gauge.large {
+/* .gauge.large {
   width: 20rem;
   height: 20rem;
   top: 5rem;
   left: 5rem;
-}
+} */
 
 /* Center cover for gauge - background and sizing */
 

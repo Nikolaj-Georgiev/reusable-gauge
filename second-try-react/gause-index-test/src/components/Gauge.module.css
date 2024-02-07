@@ -42,6 +42,11 @@
   --dynamic-piece-8-background: var(--gauge-08);
   --dynamic-piece-9-background: var(--gauge-09);
   --dynamic-piece-10-background: var(--gauge-010);
+
+  --dynamic-gauge-width: 10rem;
+  --dynamic-gauge-height: 10rem;
+  --dynamic-gauge-top: 10rem;
+  --dynamic-gauge-left: 10rem;
 }
 
 .container {
@@ -56,14 +61,14 @@
 .gauge {
   margin: auto;
   position: absolute;
-  width: 10rem;
-  height: 10rem;
+  width: var(--dynamic-gauge-width);
+  height: var(--dynamic-gauge-height);
   border-radius: 50%;
   overflow: hidden;
   background-color: var(--gauge-bg);
   transform: rotate(90deg);
-  top: 10rem;
-  left: 10rem;
+  top: var(--dynamic-gauge-top);
+  left: var(--dynamic-gauge-left);
 }
 
 .gauge.small {
@@ -126,7 +131,7 @@
   top: var(--dynamic-colored-border-top);
   left: var(--dynamic-colored-border-left);
   border: var(--dynamic-colored-border-border) solid
-    var(--dynamic--colored-border-color);
+    var(--dynamic-colored-border-color);
   border-radius: 50%;
   z-index: 3;
 }

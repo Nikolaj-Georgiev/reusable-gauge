@@ -85,26 +85,34 @@ function handleColoredBorderSizeChange(size) {
   const coloredBorderBorder =
     formattedSize === 'small' ? 0.3 : formattedSize === 'medium' ? 0.4 : 0.5;
 
-  document.documentElement.style.setProperty(
-    '--dynamic-colored-border-width',
-    `${coloredBorderWidth}rem`
-  );
-  document.documentElement.style.setProperty(
-    '--dynamic-colored-border-height',
-    `${coloredBorderHeight}rem`
-  );
-  document.documentElement.style.setProperty(
-    '--dynamic-colored-border-top',
-    `${coloredBorderTop}rem`
-  );
-  document.documentElement.style.setProperty(
-    '--dynamic-colored-border-left',
-    `${coloredBorderLeft}rem`
-  );
-  document.documentElement.style.setProperty(
-    '--dynamic-colored-border-border',
-    `${coloredBorderBorder}rem`
-  );
+  dynamicUpdateStyleProperty([
+    { name: '--dynamic-colored-border-width', value: coloredBorderWidth },
+    { name: '--dynamic-colored-border-height', value: coloredBorderHeight },
+    { name: '--dynamic-colored-border-top', value: coloredBorderTop },
+    { name: '--dynamic-colored-border-left', value: coloredBorderLeft },
+    { name: '--dynamic-colored-border-border', value: coloredBorderBorder },
+  ]);
+
+  // document.documentElement.style.setProperty(
+  //   '--dynamic-colored-border-width',
+  //   `${coloredBorderWidth}rem`
+  // );
+  // document.documentElement.style.setProperty(
+  //   '--dynamic-colored-border-height',
+  //   `${coloredBorderHeight}rem`
+  // );
+  // document.documentElement.style.setProperty(
+  //   '--dynamic-colored-border-top',
+  //   `${coloredBorderTop}rem`
+  // );
+  // document.documentElement.style.setProperty(
+  //   '--dynamic-colored-border-left',
+  //   `${coloredBorderLeft}rem`
+  // );
+  // document.documentElement.style.setProperty(
+  //   '--dynamic-colored-border-border',
+  //   `${coloredBorderBorder}rem`
+  // );
 }
 
 function formatSize(size) {
@@ -113,4 +121,14 @@ function formatSize(size) {
     return null;
   }
   return formattedSize;
+}
+
+// function dynamicUpdateStyleProperty(arrayTest){
+function dynamicUpdateStyleProperty(cssPropsDataArray) {
+  cssPropsDataArray?.forEach((cssProp) => {
+    document.documentElement.style.setProperty(
+      `${cssProp?.name}`,
+      `${cssProp?.value}rem`
+    );
+  });
 }

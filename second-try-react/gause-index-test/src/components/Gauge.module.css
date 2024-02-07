@@ -31,6 +31,16 @@
   --dynamic-colored-border-border: 0.3rem;
   --dynamic-colored-border-color: var(--gauge-0);
 
+  --dynamic-gauge-width: 10rem;
+  --dynamic-gauge-height: 10rem;
+  --dynamic-gauge-top: 10rem;
+  --dynamic-gauge-left: 10rem;
+
+  --dynamic-center-cover-width: 9rem;
+  --dynamic-center-cover-height: 9rem;
+  --dynamic-center-cover-top: 10.5rem;
+  --dynamic-center-cover-left: 10.5rem;
+
   --dynamic-piece-0-background: var(--gauge-00);
   --dynamic-piece-1-background: var(--gauge-01);
   --dynamic-piece-2-background: var(--gauge-02);
@@ -42,11 +52,6 @@
   --dynamic-piece-8-background: var(--gauge-08);
   --dynamic-piece-9-background: var(--gauge-09);
   --dynamic-piece-10-background: var(--gauge-010);
-
-  --dynamic-gauge-width: 10rem;
-  --dynamic-gauge-height: 10rem;
-  --dynamic-gauge-top: 10rem;
-  --dynamic-gauge-left: 10rem;
 }
 
 .container {
@@ -57,7 +62,6 @@
   transition: all 0.4s;
 }
 
-/* Gauge colors and sizing */
 .gauge {
   margin: auto;
   position: absolute;
@@ -71,40 +75,20 @@
   left: var(--dynamic-gauge-left);
 }
 
-/* .gauge.small {
-  width: 10rem;
-  height: 10rem;
-  top: 10rem;
-  left: 10rem;
-} */
-/* .gauge.medium {
-  width: 15rem;
-  height: 15rem;
-  top: 7.5rem;
-  left: 7.5rem;
-} */
-
-/* .gauge.large {
-  width: 20rem;
-  height: 20rem;
-  top: 5rem;
-  left: 5rem;
-} */
-
 /* Center cover for gauge - background and sizing */
 
-.center-hide {
-  width: 9rem;
-  height: 9rem;
+.center-cover {
+  width: var(--dynamic-center-cover-width);
+  height: var(--dynamic-center-cover-height);
   position: absolute;
-  top: 10.5rem;
-  left: 10.5rem;
+  top: var(--dynamic-center-cover-top);
+  left: var(--dynamic-center-cover-left);
   background-color: var(--gauge-bg);
   border-radius: 50%;
   z-index: 2;
 }
 
-.center-hide.small {
+/* .center-hide.small {
   width: 9rem;
   height: 9rem;
   top: 10.5rem;
@@ -122,7 +106,7 @@
   position: absolute;
   top: 5.5rem;
   left: 5.5rem;
-}
+} */
 
 .colored-border {
   width: var(--dynamic-colored-border-width);

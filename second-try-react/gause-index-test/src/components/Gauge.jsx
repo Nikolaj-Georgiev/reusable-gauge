@@ -11,7 +11,7 @@ export default function Gauge({ value, size }) {
   useEffect(() => {
     const formattedSize = size?.toLowerCase().trim();
     if (['small', 'medium', 'large'].includes(formattedSize)) {
-      setCenterCoverSize(formattedSize);
+      // setCenterCoverSize(formattedSize);
     }
     // else {
     //   console.error('Invalid size! Should be "small", "medium", or "large"!');
@@ -27,10 +27,11 @@ export default function Gauge({ value, size }) {
     // }
     handleGaugeSizeChange(size);
     handleColoredBorderSizeChange(size);
+    handleCenterCoverSizeChange(size);
   }, [size, value]);
 
   const gaugeSizeCss = `${classes.gauge}`;
-  const centerCoverCss = `${classes['center-hide']} ${classes[centerCoverSize]}`;
+  const centerCoverCss = `${classes['center-cover']}`;
   const coloredBorderCss = `${classes['colored-border']}`;
 
   return (
@@ -110,6 +111,29 @@ function handleGaugeSizeChange(size) {
     { name: '--dynamic-gauge-height', value: gaugeHeight },
     { name: '--dynamic-gauge-top', value: gaugeTop },
     { name: '--dynamic-gauge-left', value: gaugeLeft },
+  ]);
+}
+
+function handleCenterCoverSizeChange(size) {
+  const formattedSize = formatSize(size);
+  if (!formattedSize) {
+    return null;
+  }
+
+  const centerCoverWidth =
+    formattedSize === 'small' ? 9 : formattedSize === 'medium' ? 14 : 19;
+  const centerCoverHeight =
+    formattedSize === 'small' ? 9 : formattedSize === 'medium' ? 14 : 19;
+  const centerCoverTop =
+    formattedSize === 'small' ? 10.5 : formattedSize === 'medium' ? 8 : 5.5;
+  const centerCoverLeft =
+    formattedSize === 'small' ? 10.5 : formattedSize === 'medium' ? 8 : 5.5;
+
+  dynamicUpdateStyleProperty([
+    { name: '--dynamic-center-cover-width', value: centerCoverWidth },
+    { name: '--dynamic-center-cover-height', value: centerCoverHeight },
+    { name: '--dynamic-center-cover-top', value: centerCoverTop },
+    { name: '--dynamic-center-cover-left', value: centerCoverLeft },
   ]);
 }
 

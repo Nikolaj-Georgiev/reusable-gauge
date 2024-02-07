@@ -1,3 +1,4 @@
+import ComponentName from './components/ComponentName';
 import Gauge from './components/Gauge';
 import { useState } from 'react';
 
@@ -11,7 +12,7 @@ function App() {
     const size = formData.get('size');
     const index = formData.get('index');
     setSizeValue(size);
-    setGaugeIndex(index);
+    setGaugeIndex(Number(index));
   };
 
   return (
@@ -33,6 +34,7 @@ function App() {
         />
         <button>submit</button>
       </form>
+      {/* <ComponentName /> */}
     </>
   );
 }

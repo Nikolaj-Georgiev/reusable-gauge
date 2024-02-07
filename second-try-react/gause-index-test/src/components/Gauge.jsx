@@ -7,15 +7,28 @@ import classes from './Gauge.module.css';
 export default function Gauge({ value, size }) {
   const [gaugeSize, setGaugeSize] = useState('');
   const [centerCoverSize, setCenterCoverSize] = useState('');
-  const gaugeSizeCss = `${classes.gauge} ${classes[gaugeSize]}`;
-  const centerCoverCss = `${classes['center-hide']} ${classes[centerCoverSize]}`;
+  const [indexValue, setIndexValue] = useState(0);
 
   useEffect(() => {
-    if (size === 'small' || size === 'medium' || size === 'large') {
-      setGaugeSize(size);
-      setCenterCoverSize(size);
+    const formattedSize = size?.toLowerCase().trim();
+    if (['small', 'medium', 'large'].includes(formattedSize)) {
+      setGaugeSize(formattedSize);
+      setCenterCoverSize(formattedSize);
+    } else {
+      console.error('Invalid size! Should be "small", "medium", or "large"!');
     }
-  }, [size]);
+
+    if (Number.isInteger(value) && value >= 0 && value <= 10) {
+      setIndexValue(value);
+    } else {
+      console.error(
+        'Invalid index: value should be a whole number in the range 0-10'
+      );
+    }
+  }, [size, value]);
+
+  const gaugeSizeCss = `${classes.gauge} ${classes[gaugeSize]}`;
+  const centerCoverCss = `${classes['center-hide']} ${classes[centerCoverSize]}`;
 
   return (
     <>

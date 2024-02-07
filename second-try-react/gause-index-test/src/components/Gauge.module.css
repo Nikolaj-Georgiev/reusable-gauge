@@ -1,3 +1,30 @@
+:root {
+  --gauge-bg: #141414;
+  --gauge-0: #11c762;
+  --gauge-1: #3abf4d;
+  --gauge-2: #64b73a;
+  --gauge-3: #8daf27;
+  --gauge-4: #b5a714;
+  --gauge-5: #dda001;
+  --gauge-6: #e38301;
+  --gauge-7: #ea6601;
+  --gauge-8: #f04901;
+  --gauge-9: #f62b01;
+  --gauge-10: #fd0e01;
+
+  --gauge-00: #12522e;
+  --gauge-01: #204e27;
+  --gauge-02: #2e4c20;
+  --gauge-03: #3d491a;
+  --gauge-04: #4b4614;
+  --gauge-05: #594310;
+  --gauge-06: #5b390f;
+  --gauge-07: #5f2e0f;
+  --gauge-08: #61250f;
+  --gauge-09: #631c0f;
+  --gauge-010: #65120f;
+}
+
 .container {
   width: 30rem;
   height: 30rem;
@@ -6,6 +33,7 @@
   transition: all 0.4s;
 }
 
+/* Gauge colors and sizing */
 .gauge {
   margin: auto;
   position: absolute;
@@ -39,6 +67,8 @@
   left: 5rem;
 }
 
+/* Center cover for gauge - background and sizing */
+
 .center-hide {
   width: 9rem;
   height: 9rem;
@@ -69,6 +99,8 @@
   top: 5.5rem;
   left: 5.5rem;
 }
+
+/* Colors and structure of the gauge */
 
 .piece {
   position: absolute;

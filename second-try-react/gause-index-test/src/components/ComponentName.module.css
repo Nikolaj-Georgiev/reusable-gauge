@@ -1,0 +1,14 @@
+:root {
+  --dynamic-width: 100px;
+  --dynamic-height: 100px;
+  --dynamic-top: 0px;
+  --dynamic-left: 0px;
+}
+
+.myComponent {
+  width: var(--dynamic-width);
+  height: var(--dynamic-height);
+  position: relative;
+  top: var(--dynamic-top);
+  left: var(--dynamic-left);
+}

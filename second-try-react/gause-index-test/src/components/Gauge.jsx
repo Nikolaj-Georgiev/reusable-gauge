@@ -92,27 +92,6 @@ function handleColoredBorderSizeChange(size) {
     { name: '--dynamic-colored-border-left', value: coloredBorderLeft },
     { name: '--dynamic-colored-border-border', value: coloredBorderBorder },
   ]);
-
-  // document.documentElement.style.setProperty(
-  //   '--dynamic-colored-border-width',
-  //   `${coloredBorderWidth}rem`
-  // );
-  // document.documentElement.style.setProperty(
-  //   '--dynamic-colored-border-height',
-  //   `${coloredBorderHeight}rem`
-  // );
-  // document.documentElement.style.setProperty(
-  //   '--dynamic-colored-border-top',
-  //   `${coloredBorderTop}rem`
-  // );
-  // document.documentElement.style.setProperty(
-  //   '--dynamic-colored-border-left',
-  //   `${coloredBorderLeft}rem`
-  // );
-  // document.documentElement.style.setProperty(
-  //   '--dynamic-colored-border-border',
-  //   `${coloredBorderBorder}rem`
-  // );
 }
 
 function formatSize(size) {
@@ -123,7 +102,6 @@ function formatSize(size) {
   return formattedSize;
 }
 
-// function dynamicUpdateStyleProperty(arrayTest){
 function dynamicUpdateStyleProperty(cssPropsDataArray) {
   cssPropsDataArray?.forEach((cssProp) => {
     document.documentElement.style.setProperty(

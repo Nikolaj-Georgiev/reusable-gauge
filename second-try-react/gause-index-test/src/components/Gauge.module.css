@@ -1,26 +1,42 @@
 .container {
+  width: 30rem;
+  height: 30rem;
   margin: 5rem auto;
   position: relative;
+  transition: all 0.4 ease-in-out;
+}
+
+.gauge {
+  margin: auto;
+  position: absolute;
   width: 10rem;
   height: 10rem;
   border-radius: 50%;
   overflow: hidden;
   background-color: var(--gauge-bg);
   transform: rotate(90deg);
+  top: 10rem;
+  left: 10rem;
 }
 
 .small {
   width: 10rem;
   height: 10rem;
+  top: 10rem;
+  left: 10rem;
 }
 .medium {
   width: 15rem;
   height: 15rem;
+  top: 7.5rem;
+  left: 7.5rem;
 }
 
 .large {
   width: 20rem;
   height: 20rem;
+  top: 5rem;
+  left: 5rem;
 }
 
 .piece {
@@ -119,7 +135,7 @@
   transform: rotate(25.71deg);
 }
 
-.piece:nth-child(12) {
+/* .piece:nth-child(12) {
   transform: rotate(282.81deg);
 }
 .piece:nth-child(12):before {
@@ -138,7 +154,7 @@
 }
 .piece:nth-child(14):before {
   transform: rotate(25.71deg);
-}
+} */
 
 .piece--0 {
   background-color: var(--gauge-0);

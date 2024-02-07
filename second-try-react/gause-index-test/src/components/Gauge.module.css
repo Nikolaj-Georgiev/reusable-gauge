@@ -29,7 +29,19 @@
   --dynamic-colored-border-top: 11.5rem;
   --dynamic-colored-border-left: 11.5rem;
   --dynamic-colored-border-border: 0.3rem;
-  --dynamic--colored-border-color: var(--gauge-0);
+  --dynamic-colored-border-color: var(--gauge-0);
+
+  --dynamic-piece-0-background: var(--gauge-00);
+  --dynamic-piece-1-background: var(--gauge-01);
+  --dynamic-piece-2-background: var(--gauge-02);
+  --dynamic-piece-3-background: var(--gauge-03);
+  --dynamic-piece-4-background: var(--gauge-04);
+  --dynamic-piece-5-background: var(--gauge-05);
+  --dynamic-piece-6-background: var(--gauge-06);
+  --dynamic-piece-7-background: var(--gauge-07);
+  --dynamic-piece-8-background: var(--gauge-08);
+  --dynamic-piece-9-background: var(--gauge-09);
+  --dynamic-piece-10-background: var(--gauge-010);
 }
 
 .container {
@@ -177,16 +189,16 @@
 .piece:nth-child(6) {
   transform: rotate(128.55deg);
 }
-.piece:nth-child(6):before {
+/* .piece:nth-child(6):before {
   transform: rotate(25.71deg);
-}
+} */
 
 .piece:nth-child(7) {
   transform: rotate(154.26deg);
 }
-.piece:nth-child(7):before {
+/* .piece:nth-child(7):before {
   transform: rotate(25.71deg);
-}
+} */
 
 .piece:nth-child(8) {
   transform: rotate(179.97deg);
@@ -238,68 +250,35 @@
 } */
 
 .piece--0 {
-  background-color: var(--gauge-0);
+  background-color: var(--dynamic-piece-0-background);
 }
 .piece--1 {
-  background-color: var(--gauge-1);
+  background-color: var(--dynamic-piece-1-background);
 }
 .piece--2 {
-  background-color: var(--gauge-2);
+  background-color: var(--dynamic-piece-2-background);
 }
 .piece--3 {
-  background-color: var(--gauge-3);
+  background-color: var(--dynamic-piece-3-background);
 }
 .piece--4 {
-  background-color: var(--gauge-4);
+  background-color: var(--dynamic-piece-4-background);
 }
 .piece--5 {
-  background-color: var(--gauge-5);
+  background-color: var(--dynamic-piece-5-background);
 }
 .piece--6 {
-  background-color: var(--gauge-6);
+  background-color: var(--dynamic-piece-6-background);
 }
 .piece--7 {
-  background-color: var(--gauge-7);
+  background-color: var(--dynamic-piece-7-background);
 }
 .piece--8 {
-  background-color: var(--gauge-8);
+  background-color: var(--dynamic-piece-8-background);
 }
 .piece--9 {
-  background-color: var(--gauge-9);
+  background-color: var(--dynamic-piece-9-background);
 }
 .piece--10 {
-  background-color: var(--gauge-10);
-}
-.piece--00 {
-  background-color: var(--gauge-00);
-}
-.piece--01 {
-  background-color: var(--gauge-01);
-}
-.piece--02 {
-  background-color: var(--gauge-02);
-}
-.piece--03 {
-  background-color: var(--gauge-03);
-}
-.piece--04 {
-  background-color: var(--gauge-04);
-}
-.piece--05 {
-  background-color: var(--gauge-05);
-}
-.piece--06 {
-  background-color: var(--gauge-06);
-}
-.piece--07 {
-  background-color: var(--gauge-07);
-}
-.piece--08 {
-  background-color: var(--gauge-08);
-}
-.piece--09 {
-  background-color: var(--gauge-09);
-}
-.piece--010 {
-  background-color: var(--gauge-010);
+  background-color: var(--dynamic-piece-10-background);
 }

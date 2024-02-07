@@ -8,12 +8,12 @@ export default function Gauge({ value, size }) {
   const [gaugeSize, setGaugeSize] = useState('');
   const [centerCoverSize, setCenterCoverSize] = useState('');
   const [indexValue, setIndexValue] = useState(0);
-  const [coloredBorderSize, setColoredBorderSize] = useState({
-    width: 7,
-    height: 7,
-    top: 11.5,
-    left: 11.5,
-  });
+  // const [coloredBorderSize, setColoredBorderSize] = useState({
+  //   width: 7,
+  //   height: 7,
+  //   top: 11.5,
+  //   left: 11.5,
+  // });
 
   useEffect(() => {
     const formattedSize = size?.toLowerCase().trim();
@@ -33,60 +33,12 @@ export default function Gauge({ value, size }) {
     //     'Invalid index: value should be a whole number in the range 0-10'
     //   );
     // }
-    handleSizeChange(size);
+    handleColoredBorderSizeChange(size);
   }, [size, value]);
 
   const gaugeSizeCss = `${classes.gauge} ${classes[gaugeSize]}`;
   const centerCoverCss = `${classes['center-hide']} ${classes[centerCoverSize]}`;
   const coloredBorderCss = `${classes['colored-border']}`;
-
-  function handleSizeChange(size) {
-    const formattedSize = size?.toLowerCase().trim();
-    if (!['small', 'medium', 'large'].includes(formattedSize)) {
-      return null;
-    }
-
-    const coloredBorderWidth =
-      formattedSize === 'small' ? 7 : formattedSize === 'medium' ? 11 : 15;
-    const coloredBorderHeight =
-      formattedSize === 'small' ? 7 : formattedSize === 'medium' ? 11 : 15;
-    const coloredBorderTop =
-      formattedSize === 'small' ? 11.5 : formattedSize === 'medium' ? 9.5 : 7.5;
-    const coloredBorderLeft =
-      formattedSize === 'small' ? 11.5 : formattedSize === 'medium' ? 9.5 : 7.5;
-    const coloredBorderBorder =
-      formattedSize === 'small' ? 0.3 : formattedSize === 'medium' ? 0.4 : 0.5;
-
-    setColoredBorderSize((prevSize) => ({
-      ...prevSize,
-      width: coloredBorderWidth,
-      height: coloredBorderHeight,
-      top: coloredBorderTop,
-      left: coloredBorderLeft,
-      border: coloredBorderBorder,
-    }));
-
-    document.documentElement.style.setProperty(
-      '--dynamic-colored-border-width',
-      `${coloredBorderWidth}rem`
-    );
-    document.documentElement.style.setProperty(
-      '--dynamic-colored-border-height',
-      `${coloredBorderHeight}rem`
-    );
-    document.documentElement.style.setProperty(
-      '--dynamic-colored-border-top',
-      `${coloredBorderTop}rem`
-    );
-    document.documentElement.style.setProperty(
-      '--dynamic-colored-border-left',
-      `${coloredBorderLeft}rem`
-    );
-    document.documentElement.style.setProperty(
-      '--dynamic-colored-border-border',
-      `${coloredBorderBorder}rem`
-    );
-  }
 
   return (
     <>
@@ -99,19 +51,66 @@ export default function Gauge({ value, size }) {
           <div className='arrow'></div>
         </div>
         <div className={gaugeSizeCss}>
-          <div className={`${classes.piece} ${classes['piece--00']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--01']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--02']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--03']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--04']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--05']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--06']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--07']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--08']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--09']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--010']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--0']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--1']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--2']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--3']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--4']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--5']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--6']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--7']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--8']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--9']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--10']}`}></div>
         </div>
       </div>
     </>
   );
+}
+
+function handleColoredBorderSizeChange(size) {
+  const formattedSize = formatSize(size);
+  if (!formattedSize) {
+    return null;
+  }
+
+  const coloredBorderWidth =
+    formattedSize === 'small' ? 7 : formattedSize === 'medium' ? 11 : 15;
+  const coloredBorderHeight =
+    formattedSize === 'small' ? 7 : formattedSize === 'medium' ? 11 : 15;
+  const coloredBorderTop =
+    formattedSize === 'small' ? 11.5 : formattedSize === 'medium' ? 9.5 : 7.5;
+  const coloredBorderLeft =
+    formattedSize === 'small' ? 11.5 : formattedSize === 'medium' ? 9.5 : 7.5;
+  const coloredBorderBorder =
+    formattedSize === 'small' ? 0.3 : formattedSize === 'medium' ? 0.4 : 0.5;
+
+  document.documentElement.style.setProperty(
+    '--dynamic-colored-border-width',
+    `${coloredBorderWidth}rem`
+  );
+  document.documentElement.style.setProperty(
+    '--dynamic-colored-border-height',
+    `${coloredBorderHeight}rem`
+  );
+  document.documentElement.style.setProperty(
+    '--dynamic-colored-border-top',
+    `${coloredBorderTop}rem`
+  );
+  document.documentElement.style.setProperty(
+    '--dynamic-colored-border-left',
+    `${coloredBorderLeft}rem`
+  );
+  document.documentElement.style.setProperty(
+    '--dynamic-colored-border-border',
+    `${coloredBorderBorder}rem`
+  );
+}
+
+function formatSize(size) {
+  const formattedSize = size?.toLowerCase().trim();
+  if (!['small', 'medium', 'large'].includes(formattedSize)) {
+    return null;
+  }
+  return formattedSize;
 }

@@ -6,12 +6,14 @@ import classes from './Gauge.module.css';
 
 export default function Gauge({ value, size }) {
   const [gaugeSize, setGaugeSize] = useState('');
-  const containerSizeCss = `${classes.gauge} ${classes[gaugeSize]}`;
+  const [centerCoverSize, setCenterCoverSize] = useState('');
+  const gaugeSizeCss = `${classes.gauge} ${classes[gaugeSize]}`;
+  const centerCoverCss = `${classes['center-hide']} ${classes[centerCoverSize]}`;
 
   useEffect(() => {
     if (size === 'small' || size === 'medium' || size === 'large') {
       setGaugeSize(size);
-      console.log(size);
+      setCenterCoverSize(size);
     }
   }, [size]);
 
@@ -21,11 +23,11 @@ export default function Gauge({ value, size }) {
         <div className='center-content'>
           <p>0</p>
         </div>
-        <div className={classes['center-hide']}></div>
+        <div className={centerCoverCss}></div>
         <div className='arrow-wrapper index-0'>
           <div className='arrow'></div>
         </div>
-        <div className={containerSizeCss}>
+        <div className={gaugeSizeCss}>
           <div className={`${classes.piece} ${classes['piece--00']}`}></div>
           <div className={`${classes.piece} ${classes['piece--01']}`}></div>
           <div className={`${classes.piece} ${classes['piece--02']}`}></div>

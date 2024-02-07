@@ -6,7 +6,7 @@ import classes from './Gauge.module.css';
 
 export default function Gauge({ value, size }) {
   const [gaugeSize, setGaugeSize] = useState('');
-  let containerSizeCss = `${classes.container} ${classes[gaugeSize]}`;
+  const containerSizeCss = `${classes.gauge} ${classes[gaugeSize]}`;
 
   useEffect(() => {
     if (size === 'small' || size === 'medium' || size === 'large') {
@@ -16,18 +16,29 @@ export default function Gauge({ value, size }) {
   }, [size]);
 
   return (
-    <div className={containerSizeCss}>
-      <div className={`${classes.piece} ${classes['piece--00']}`}></div>
-      <div className={`${classes.piece} ${classes['piece--01']}`}></div>
-      <div className={`${classes.piece} ${classes['piece--02']}`}></div>
-      <div className={`${classes.piece} ${classes['piece--03']}`}></div>
-      <div className={`${classes.piece} ${classes['piece--04']}`}></div>
-      <div className={`${classes.piece} ${classes['piece--05']}`}></div>
-      <div className={`${classes.piece} ${classes['piece--06']}`}></div>
-      <div className={`${classes.piece} ${classes['piece--07']}`}></div>
-      <div className={`${classes.piece} ${classes['piece--08']}`}></div>
-      <div className={`${classes.piece} ${classes['piece--09']}`}></div>
-      <div className={`${classes.piece} ${classes['piece--010']}`}></div>
-    </div>
+    <>
+      <div className={classes.container}>
+        <div class='center-content'>
+          <p>0</p>
+        </div>
+        <div class='gauge-center-hide'></div>
+        <div class='arrow-wrapper index-0'>
+          <div class='arrow'></div>
+        </div>
+        <div className={containerSizeCss}>
+          <div className={`${classes.piece} ${classes['piece--00']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--01']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--02']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--03']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--04']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--05']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--06']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--07']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--08']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--09']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--010']}`}></div>
+        </div>
+      </div>
+    </>
   );
 }

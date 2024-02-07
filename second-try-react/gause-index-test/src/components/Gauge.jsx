@@ -5,18 +5,9 @@ import { useState, useEffect } from 'react';
 import classes from './Gauge.module.css';
 
 export default function Gauge({ value, size }) {
-  const [centerCoverSize, setCenterCoverSize] = useState('');
   const [indexValue, setIndexValue] = useState(0);
 
   useEffect(() => {
-    const formattedSize = size?.toLowerCase().trim();
-    if (['small', 'medium', 'large'].includes(formattedSize)) {
-      // setCenterCoverSize(formattedSize);
-    }
-    // else {
-    //   console.error('Invalid size! Should be "small", "medium", or "large"!');
-    // }
-
     if (Number.isInteger(value) && value >= 0 && value <= 10) {
       setIndexValue(value);
     }
@@ -30,9 +21,10 @@ export default function Gauge({ value, size }) {
     handleCenterCoverSizeChange(size);
   }, [size, value]);
 
-  const gaugeSizeCss = `${classes.gauge}`;
-  const centerCoverCss = `${classes['center-cover']}`;
-  const coloredBorderCss = `${classes['colored-border']}`;
+  // you may want to add classes here, therefore they are with let and in separate variables.
+  let gaugeSizeCss = `${classes.gauge}`;
+  let centerCoverCss = `${classes['center-cover']}`;
+  let coloredBorderCss = `${classes['colored-border']}`;
 
   return (
     <>
@@ -64,6 +56,14 @@ export default function Gauge({ value, size }) {
 
 /////////////////////////////////////////////
 // This are helper functions and probably will not stay in the component. You may want to bring them from outside, therefore I don't use useCallback for them.
+
+function formatSize(size) {
+  const formattedSize = size?.toLowerCase().trim();
+  if (!['small', 'medium', 'large'].includes(formattedSize)) {
+    return null;
+  }
+  return formattedSize;
+}
 
 function handleColoredBorderSizeChange(size) {
   const formattedSize = formatSize(size);
@@ -135,14 +135,6 @@ function handleCenterCoverSizeChange(size) {
     { name: '--dynamic-center-cover-top', value: centerCoverTop },
     { name: '--dynamic-center-cover-left', value: centerCoverLeft },
   ]);
-}
-
-function formatSize(size) {
-  const formattedSize = size?.toLowerCase().trim();
-  if (!['small', 'medium', 'large'].includes(formattedSize)) {
-    return null;
-  }
-  return formattedSize;
 }
 
 function dynamicUpdateStyleProperty(cssPropsDataArray) {

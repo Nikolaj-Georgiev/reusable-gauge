@@ -58,6 +58,18 @@
   --dynamic-piece-8-background: var(--gauge-08);
   --dynamic-piece-9-background: var(--gauge-09);
   --dynamic-piece-10-background: var(--gauge-010);
+
+  --dynamic-arrow-position-0: -82deg;
+  --dynamic-arrow-position-1: -58deg;
+  --dynamic-arrow-position-2: -32deg;
+  --dynamic-arrow-position-3: -7deg;
+  --dynamic-arrow-position-4: 19deg;
+  --dynamic-arrow-position-5: 45deg;
+  --dynamic-arrow-position-6: 70deg;
+  --dynamic-arrow-position-7: 96deg;
+  --dynamic-arrow-position-8: 122deg;
+  --dynamic-arrow-position-9: 147deg;
+  --dynamic-arrow-position-10: 172deg;
 }
 
 .container {
@@ -103,7 +115,20 @@
   border: var(--dynamic-colored-border-border) solid
     var(--dynamic-colored-border-color);
   border-radius: 50%;
+  rotate: var(--dynamic-arrow-position-0);
   z-index: 3;
+}
+
+.arrow {
+  width: 0rem;
+  height: 0rem;
+  position: absolute;
+  /* background-color: #11c762; */
+  transform: translate(0, 36%);
+  border-left: 0.4rem solid transparent;
+  border-right: 0.4rem solid transparent;
+  border-bottom: 0.7rem solid #11c762;
+  rotate: -45deg;
 }
 
 .center-content {

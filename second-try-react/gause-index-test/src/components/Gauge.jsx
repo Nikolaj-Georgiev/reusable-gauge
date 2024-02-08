@@ -11,11 +11,7 @@ export default function Gauge({ value, size }) {
     if (Number.isInteger(value) && value >= 0 && value <= 10) {
       setIndexValue(value);
     }
-    // else {
-    //   console.error(
-    //     'Invalid index: value should be a whole number in the range 0-10'
-    //   );
-    // }
+
     handleGaugeSizeChange(size);
     handleColoredBorderSizeChange(size);
     handleCenterCoverSizeChange(size);
@@ -36,7 +32,7 @@ export default function Gauge({ value, size }) {
         </div>
         <div className={centerCoverCss}></div>
         <div className={`${coloredBorderCss} index-0`}>
-          <div className='arrow'></div>
+          <div className={classes.arrow}></div>
         </div>
         <div className={gaugeSizeCss}>
           <div className={`${classes.piece} ${classes['piece--0']}`}></div>

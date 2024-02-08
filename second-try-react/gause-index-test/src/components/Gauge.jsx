@@ -4,13 +4,6 @@ import { useState, useEffect } from 'react';
 
 import classes from './Gauge.module.css';
 
-const centerContentIndex = [4, 6, 9];
-const centerContentSize = [
-  { value: 4, value1: 13 },
-  { value: 6, value1: 12 },
-  { value: 8, value1: 11 },
-];
-
 export default function Gauge({ value, size }) {
   const [indexValue, setIndexValue] = useState(0);
 

@@ -41,6 +41,12 @@
   --dynamic-center-cover-top: 10.5rem;
   --dynamic-center-cover-left: 10.5rem;
 
+  --dynamic-center-content-width: 4rem;
+  --dynamic-center-content-height: 4rem;
+  --dynamic-center-content-top: 13rem;
+  --dynamic-center-content-left: 13rem;
+  --dynamic-center-content-font-size: 3.8rem;
+
   --dynamic-piece-0-background: var(--gauge-00);
   --dynamic-piece-1-background: var(--gauge-01);
   --dynamic-piece-2-background: var(--gauge-02);
@@ -88,26 +94,6 @@
   z-index: 2;
 }
 
-/* .center-hide.small {
-  width: 9rem;
-  height: 9rem;
-  top: 10.5rem;
-  left: 10.5rem;
-}
-.center-hide.medium {
-  width: 14rem;
-  height: 14rem;
-  top: 8rem;
-  left: 8rem;
-}
-.center-hide.large {
-  width: 19rem;
-  height: 19rem;
-  position: absolute;
-  top: 5.5rem;
-  left: 5.5rem;
-} */
-
 .colored-border {
   width: var(--dynamic-colored-border-width);
   height: var(--dynamic-colored-border-height);
@@ -118,6 +104,27 @@
     var(--dynamic-colored-border-color);
   border-radius: 50%;
   z-index: 3;
+}
+
+.center-content {
+  background-color: #141414;
+  width: var(--dynamic-center-content-width);
+  height: var(--dynamic-center-content-height);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: var(--dynamic-center-content-top);
+  left: var(--dynamic-center-content-left);
+  border-radius: 50%;
+  z-index: 4;
+}
+
+.center-content > p {
+  font-family: sans-serif;
+  color: #ffffff;
+  font-size: var(--dynamic-center-content-font-size);
+  font-weight: 400;
 }
 
 /* Colors and structure of the gauge */

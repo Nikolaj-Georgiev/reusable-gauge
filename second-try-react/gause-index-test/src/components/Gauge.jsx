@@ -4,6 +4,13 @@ import { useState, useEffect } from 'react';
 
 import classes from './Gauge.module.css';
 
+const centerContentIndex = [4, 6, 9];
+const centerContentSize = [
+  { value: 4, value1: 13 },
+  { value: 6, value1: 12 },
+  { value: 8, value1: 11 },
+];
+
 export default function Gauge({ value, size }) {
   const [indexValue, setIndexValue] = useState(0);
 
@@ -19,18 +26,20 @@ export default function Gauge({ value, size }) {
     handleGaugeSizeChange(size);
     handleColoredBorderSizeChange(size);
     handleCenterCoverSizeChange(size);
+    handleCenterContentSizeChange(size);
   }, [size, value]);
 
-  // you may want to add classes here, therefore they are with let and in separate variables.
+  // you may want to add classes here, therefore they are initiated with with let and in separate variables.
   let gaugeSizeCss = `${classes.gauge}`;
   let centerCoverCss = `${classes['center-cover']}`;
   let coloredBorderCss = `${classes['colored-border']}`;
+  let centerContentCss = `${classes['center-content']}`;
 
   return (
     <>
       <div className={classes.container}>
-        <div className='center-content'>
-          <p>0</p>
+        <div className={centerContentCss}>
+          <p>{indexValue}</p>
         </div>
         <div className={centerCoverCss}></div>
         <div className={`${coloredBorderCss} index-0`}>
@@ -66,6 +75,35 @@ function formatSize(size) {
 }
 
 function validateIndex() {}
+
+function handleCenterContentSizeChange(size) {
+  const formattedSize = formatSize(size);
+  if (!formattedSize) {
+    return null;
+  }
+
+  const centerContentWidth =
+    formattedSize === 'small' ? 4 : formattedSize === 'medium' ? 6 : 8;
+  const centerContentHeight =
+    formattedSize === 'small' ? 4 : formattedSize === 'medium' ? 6 : 8;
+  const centerContentTop =
+    formattedSize === 'small' ? 13 : formattedSize === 'medium' ? 12 : 11;
+  const centerContentLeft =
+    formattedSize === 'small' ? 13 : formattedSize === 'medium' ? 12 : 11;
+  const centerContentFontSize =
+    formattedSize === 'small' ? 4 : formattedSize === 'medium' ? 6 : 9;
+
+  dynamicUpdateStyleProperty([
+    { name: '--dynamic-center-content-width', value: centerContentWidth },
+    { name: '--dynamic-center-content-height', value: centerContentHeight },
+    { name: '--dynamic-center-content-top', value: centerContentTop },
+    { name: '--dynamic-center-content-left', value: centerContentLeft },
+    {
+      name: '--dynamic-center-content-font-size',
+      value: centerContentFontSize,
+    },
+  ]);
+}
 
 function handleColoredBorderSizeChange(size) {
   const formattedSize = formatSize(size);

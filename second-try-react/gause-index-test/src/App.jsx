@@ -26,12 +26,15 @@ function App() {
           <div className='input-container'>
             <div className='size'>
               <label htmlFor='size'>Size</label>
-
-              <input
-                type='text'
-                name='size'
-                id='size'
-              />
+              <select
+                type='number'
+                id='index'
+                name='index'
+              >
+                <option value='small'>small</option>
+                <option value='medium'>medium</option>
+                <option value='large'>large</option>
+              </select>
             </div>
             <div className='index'>
               <label htmlFor='index'>Index value</label>

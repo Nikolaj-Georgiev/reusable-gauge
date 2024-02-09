@@ -27,9 +27,8 @@ function App() {
             <div className='size'>
               <label htmlFor='size'>Size</label>
               <select
-                type='number'
-                id='index'
-                name='index'
+                id='size'
+                name='size'
               >
                 <option value='small'>small</option>
                 <option value='medium'>medium</option>

@@ -13,14 +13,7 @@ export default function Gauge({ value, size }) {
     if (checkedValue || checkedValue === 0) {
       setIndexValue(checkedValue);
     }
-    handleArrowPosition(indexValue);
-    handlePositionColors(indexValue);
-
-    handleGaugeSizeChange(size);
-    handleColoredBorderSizeChange(size);
-    handleCenterCoverSizeChange(size);
-    handleCenterContentSizeChange(size);
-    handleArrowSizeChange(size);
+    updateStyles(indexValue, size);
   }, [size, value, indexValue]);
 
   // you may want to add classes here, therefore they are initiated with with let and in separate variables.
@@ -40,7 +33,7 @@ export default function Gauge({ value, size }) {
           <div className={classes.arrow}></div>
         </div>
         <div className={gaugeSizeCss}>
-          <div className={`${classes.piece} ${classes['piece--0']}`}></div>
+          {/* <div className={`${classes.piece} ${classes['piece--0']}`}></div>
           <div className={`${classes.piece} ${classes['piece--1']}`}></div>
           <div className={`${classes.piece} ${classes['piece--2']}`}></div>
           <div className={`${classes.piece} ${classes['piece--3']}`}></div>
@@ -50,7 +43,13 @@ export default function Gauge({ value, size }) {
           <div className={`${classes.piece} ${classes['piece--7']}`}></div>
           <div className={`${classes.piece} ${classes['piece--8']}`}></div>
           <div className={`${classes.piece} ${classes['piece--9']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--10']}`}></div>
+          <div className={`${classes.piece} ${classes['piece--10']}`}></div> */}
+          {Array.from({ length: 11 }).map((_, i) => (
+            <div
+              key={i}
+              className={`${classes.piece} ${classes[`piece--${i}`]}`}
+            ></div>
+          ))}
         </div>
       </div>
     </>
@@ -60,7 +59,16 @@ export default function Gauge({ value, size }) {
 /////////////////////////////////////////////
 // This are helper functions and probably will not stay in the component. You may want to bring them from outside, therefore I don't use useCallback for them.
 
-// function (){}
+function updateStyles(index, size) {
+  handleArrowPosition(index);
+  handlePositionColors(index);
+
+  handleGaugeSizeChange(size);
+  handleColoredBorderSizeChange(size);
+  handleCenterCoverSizeChange(size);
+  handleCenterContentSizeChange(size);
+  handleArrowSizeChange(size);
+}
 
 ////////////////////////////////////////////
 // functions for changing the position of the arrow and background colors

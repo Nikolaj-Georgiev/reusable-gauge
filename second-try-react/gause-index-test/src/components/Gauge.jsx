@@ -8,7 +8,11 @@ export default function Gauge({ value, size }) {
   const [indexValue, setIndexValue] = useState(0);
 
   useEffect(() => {
-    validateIndex(value, setIndexValue);
+    const checkedValue = validateIndex(value);
+    if (checkedValue) {
+      setIndexValue(checkedValue);
+    }
+    handleArrowPosition(checkedValue);
 
     handleGaugeSizeChange(size);
     handleColoredBorderSizeChange(size);
@@ -57,10 +61,23 @@ export default function Gauge({ value, size }) {
 ////////////////////////////////////////////
 // functions for changing the position of the arrow and background colors
 
-function validateIndex(value, setIndexValue) {
+function validateIndex(value) {
   if (Number.isInteger(value) && value >= 0 && value <= 10) {
-    setIndexValue(value);
+    return value;
   }
+  return null;
+}
+
+function dynamicUpdatePositionProperty(value) {
+  const positions = [-82, -58, -32, -7, 19, 45, 70, 96, 122, 147, 172];
+  document.documentElement.style.setProperty(
+    '--dynamic-arrow-position',
+    `${positions[value]}deg`
+  );
+}
+
+function handleArrowPosition(index) {
+  dynamicUpdatePositionProperty(index);
 }
 
 /////////////////////////////////////////////
@@ -72,6 +89,19 @@ function formatSize(size) {
     return null;
   }
   return formattedSize;
+}
+
+function dynamicUpdateSizeStyleProperty(cssPropsDataArray) {
+  cssPropsDataArray?.forEach((cssProp) => {
+    document.documentElement.style.setProperty(
+      `${cssProp?.name}`,
+      `${
+        !cssProp.name.includes('translate')
+          ? `${cssProp?.value}rem`
+          : `${cssProp?.value}%`
+      }`
+    );
+  });
 }
 
 function handleCenterContentSizeChange(size) {
@@ -196,17 +226,4 @@ function handleCenterCoverSizeChange(size) {
     { name: '--dynamic-center-cover-top', value: centerCoverTop },
     { name: '--dynamic-center-cover-left', value: centerCoverLeft },
   ]);
-}
-
-function dynamicUpdateSizeStyleProperty(cssPropsDataArray) {
-  cssPropsDataArray?.forEach((cssProp) => {
-    document.documentElement.style.setProperty(
-      `${cssProp?.name}`,
-      `${
-        !cssProp.name.includes('translate')
-          ? `${cssProp?.value}rem`
-          : `${cssProp?.value}%`
-      }`
-    );
-  });
 }

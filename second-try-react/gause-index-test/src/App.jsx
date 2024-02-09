@@ -17,24 +17,30 @@ function App() {
 
   return (
     <>
-      <Gauge
-        size={sizeValue}
-        value={gaugeIndex}
-      />
-      <form onSubmit={handleSubmit}>
-        <input
-          type='text'
-          name='size'
-          id='size'
+      <div className='container'>
+        <Gauge
+          size={sizeValue}
+          value={gaugeIndex}
         />
-        <input
-          type='number'
-          id='index'
-          name='index'
-        />
-        <button>submit</button>
-      </form>
-      {/* <ComponentName /> */}
+        <form onSubmit={handleSubmit}>
+          <div className='size'>
+            <input
+              type='text'
+              name='size'
+              id='size'
+            />
+            <button>size</button>
+          </div>
+          <div className='index'>
+            <input
+              type='number'
+              id='index'
+              name='index'
+            />
+            <button>index</button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }

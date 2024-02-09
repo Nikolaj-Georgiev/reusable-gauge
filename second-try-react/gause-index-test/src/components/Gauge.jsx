@@ -60,6 +60,8 @@ export default function Gauge({ value, size }) {
 /////////////////////////////////////////////
 // This are helper functions and probably will not stay in the component. You may want to bring them from outside, therefore I don't use useCallback for them.
 
+// function (){}
+
 ////////////////////////////////////////////
 // functions for changing the position of the arrow and background colors
 
@@ -92,9 +94,11 @@ function handlePositionColors(index) {
     `var(--gauge-${index})`
   );
 
-  document.documentElement.style.setProperty(
-    `--dynamic-piece-${index}-background`,
-    `var(--gauge-${index})`
+  Array.from({ length: 11 }).forEach((_, i) =>
+    document.documentElement.style.setProperty(
+      `--dynamic-piece-${i}-background`,
+      `var(--gauge-${i === index ? i : `0${i}`})`
+    )
   );
 }
 

@@ -9,10 +9,11 @@ export default function Gauge({ value, size }) {
 
   useEffect(() => {
     const checkedValue = validateIndex(value);
-    if (checkedValue) {
+    if (checkedValue || checkedValue === 0) {
       setIndexValue(checkedValue);
     }
     handleArrowPosition(indexValue);
+    handlePositionColors(indexValue);
 
     handleGaugeSizeChange(size);
     handleColoredBorderSizeChange(size);
@@ -78,6 +79,17 @@ function dynamicUpdatePositionProperty(value) {
 
 function handleArrowPosition(index) {
   dynamicUpdatePositionProperty(index);
+}
+
+function handlePositionColors(index) {
+  document.documentElement.style.setProperty(
+    '--dynamic-colored-border-color',
+    `var(--gauge-${index})`
+  );
+  document.documentElement.style.setProperty(
+    '--dynamic-arrow-color',
+    `var(--gauge-${index})`
+  );
 }
 
 /////////////////////////////////////////////

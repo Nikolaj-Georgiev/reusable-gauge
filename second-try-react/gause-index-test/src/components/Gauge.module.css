@@ -65,6 +65,7 @@
   --dynamic-arrow-right-border: 0.4rem;
   --dynamic-arrow-bottom-border: 0.8rem;
   --dynamic-arrow-translate: 35%;
+  --dynamic-arrow-color: var(--gauge-0);
 }
 
 .container {
@@ -122,7 +123,8 @@
   transform: translate(0, var(--dynamic-arrow-translate));
   border-left: var(--dynamic-arrow-left-border) solid transparent;
   border-right: var(--dynamic-arrow-right-border) solid transparent;
-  border-bottom: var(--dynamic-arrow-bottom-border) solid var(--gauge-0);
+  border-bottom: var(--dynamic-arrow-bottom-border) solid
+    var(--dynamic-arrow-color);
   rotate: -45deg;
 }
 

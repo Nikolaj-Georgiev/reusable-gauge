@@ -45,7 +45,7 @@
   --dynamic-center-content-height: 4rem;
   --dynamic-center-content-top: 13rem;
   --dynamic-center-content-left: 13rem;
-  --dynamic-center-content-font-size: 3.8rem;
+  --dynamic-center-content-font-size: 3.2rem;
 
   --dynamic-piece-0-background: var(--gauge-00);
   --dynamic-piece-1-background: var(--gauge-01);
@@ -60,17 +60,6 @@
   --dynamic-piece-10-background: var(--gauge-010);
 
   --dynamic-arrow-position: -82deg;
-  /* --dynamic-arrow-position-0: -82deg;
-  --dynamic-arrow-position-1: -58deg;
-  --dynamic-arrow-position-2: -32deg;
-  --dynamic-arrow-position-3: -7deg;
-  --dynamic-arrow-position-4: 19deg;
-  --dynamic-arrow-position-5: 45deg;
-  --dynamic-arrow-position-6: 70deg;
-  --dynamic-arrow-position-7: 96deg;
-  --dynamic-arrow-position-8: 122deg;
-  --dynamic-arrow-position-9: 147deg;
-  --dynamic-arrow-position-10: 172deg; */
 
   --dynamic-arrow-left-border: 0.4rem;
   --dynamic-arrow-right-border: 0.4rem;
@@ -152,7 +141,7 @@
 }
 
 .center-content > p {
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #ffffff;
   font-size: var(--dynamic-center-content-font-size);
   font-weight: 400;

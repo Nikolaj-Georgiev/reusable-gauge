@@ -119,7 +119,7 @@ function handleCenterContentSizeChange(size) {
   const centerContentLeft =
     formattedSize === 'small' ? 13 : formattedSize === 'medium' ? 12 : 11;
   const centerContentFontSize =
-    formattedSize === 'small' ? 4 : formattedSize === 'medium' ? 6 : 9;
+    formattedSize === 'small' ? 3.2 : formattedSize === 'medium' ? 5 : 7;
 
   dynamicUpdateSizeStyleProperty([
     { name: '--dynamic-center-content-width', value: centerContentWidth },
@@ -212,13 +212,13 @@ function handleCenterCoverSizeChange(size) {
   }
 
   const centerCoverWidth =
-    formattedSize === 'small' ? 9 : formattedSize === 'medium' ? 14 : 19;
+    formattedSize === 'small' ? 9 : formattedSize === 'medium' ? 13.6 : 18;
   const centerCoverHeight =
-    formattedSize === 'small' ? 9 : formattedSize === 'medium' ? 14 : 19;
+    formattedSize === 'small' ? 9 : formattedSize === 'medium' ? 13.6 : 18;
   const centerCoverTop =
-    formattedSize === 'small' ? 10.5 : formattedSize === 'medium' ? 8 : 5.5;
+    formattedSize === 'small' ? 10.5 : formattedSize === 'medium' ? 8.2 : 6;
   const centerCoverLeft =
-    formattedSize === 'small' ? 10.5 : formattedSize === 'medium' ? 8 : 5.5;
+    formattedSize === 'small' ? 10.5 : formattedSize === 'medium' ? 8.2 : 6;
 
   dynamicUpdateSizeStyleProperty([
     { name: '--dynamic-center-cover-width', value: centerCoverWidth },

@@ -110,6 +110,7 @@
   left: var(--dynamic-colored-border-left);
   border: var(--dynamic-colored-border-border) solid
     var(--dynamic-colored-border-color);
+  transition: var(--dynamic-colored-border-color) 0.8s ease;
   border-radius: 50%;
   transform: rotate(var(--dynamic-arrow-position));
   transition: transform 0.8s ease;
@@ -126,6 +127,7 @@
   border-bottom: var(--dynamic-arrow-bottom-border) solid
     var(--dynamic-arrow-color);
   rotate: -45deg;
+  transition: var(--dynamic-arrow-color) 0.8s ease;
 }
 
 .center-content {
@@ -156,6 +158,7 @@
   height: 100%;
   border-radius: 50%;
   clip-path: polygon(50% 50%, 105% 95%, 100% 100%, 75% 100%);
+  transition: all 0.5s;
 }
 
 .piece:before {
@@ -172,100 +175,46 @@
 .piece:nth-child(1) {
   transform: rotate(0deg);
 }
-/* .piece:nth-child(1):before {
-  transform: rotate(25.71deg);
-} */
 
 .piece:nth-child(2) {
   transform: rotate(25.71deg);
 }
-/* .piece:nth-child(2):before {
-  transform: rotate(25.71deg);
-} */
 
 .piece:nth-child(3) {
   transform: rotate(51.42deg);
 }
-/* .piece:nth-child(3):before {
-  transform: rotate(25.71deg);
-} */
 
 .piece:nth-child(4) {
   transform: rotate(77.13deg);
 }
-/* .piece:nth-child(4):before {
-  transform: rotate(25.71deg);
-} */
 
 .piece:nth-child(5) {
   transform: rotate(102.84deg);
 }
-/* .piece:nth-child(5):before {
-  transform: rotate(25.71deg);
-} */
 
 .piece:nth-child(6) {
   transform: rotate(128.55deg);
 }
-/* .piece:nth-child(6):before {
-  transform: rotate(25.71deg);
-} */
 
 .piece:nth-child(7) {
   transform: rotate(154.26deg);
 }
-/* .piece:nth-child(7):before {
-  transform: rotate(25.71deg);
-} */
 
 .piece:nth-child(8) {
   transform: rotate(179.97deg);
 }
-/* .piece:nth-child(8):before {
-  transform: rotate(25.71deg);
-} */
 
 .piece:nth-child(9) {
   transform: rotate(205.68deg);
 }
-/* .piece:nth-child(9):before {
-  transform: rotate(25.71deg);
-} */
 
 .piece:nth-child(10) {
   transform: rotate(231.39deg);
 }
-/* .piece:nth-child(10):before {
-  transform: rotate(25.71deg);
-} */
 
 .piece:nth-child(11) {
   transform: rotate(257.1deg);
 }
-/* .piece:nth-child(11):before {
-  transform: rotate(25.71deg);
-} */
-
-/* .piece:nth-child(12) {
-  transform: rotate(282.81deg);
-}
-.piece:nth-child(12):before {
-  transform: rotate(25.71deg);
-}
-
-.piece:nth-child(13) {
-  transform: rotate(308.52deg);
-}
-.piece:nth-child(13):before {
-  transform: rotate(25.71deg);
-}
-
-.piece:nth-child(14) {
-  transform: rotate(334.23deg);
-}
-.piece:nth-child(14):before {
-  transform: rotate(25.71deg);
-} */
 
 .piece--0 {
   background-color: var(--dynamic-piece-0-background);

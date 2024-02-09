@@ -70,6 +70,11 @@
   --dynamic-arrow-position-8: 122deg;
   --dynamic-arrow-position-9: 147deg;
   --dynamic-arrow-position-10: 172deg;
+
+  --dynamic-arrow-left-border: 0.4rem;
+  --dynamic-arrow-right-border: 0.4rem;
+  --dynamic-arrow-bottom-border: 0.8rem;
+  --dynamic-arrow-translate: 35%;
 }
 
 .container {
@@ -123,11 +128,10 @@
   width: 0rem;
   height: 0rem;
   position: absolute;
-  /* background-color: #11c762; */
-  transform: translate(0, 36%);
-  border-left: 0.4rem solid transparent;
-  border-right: 0.4rem solid transparent;
-  border-bottom: 0.7rem solid #11c762;
+  transform: translate(0, var(--dynamic-arrow-translate));
+  border-left: var(--dynamic-arrow-left-border) solid transparent;
+  border-right: var(--dynamic-arrow-right-border) solid transparent;
+  border-bottom: var(--dynamic-arrow-bottom-border) solid var(--gauge-0);
   rotate: -45deg;
 }
 

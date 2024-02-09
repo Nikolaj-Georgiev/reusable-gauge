@@ -16,6 +16,7 @@ export default function Gauge({ value, size }) {
     handleColoredBorderSizeChange(size);
     handleCenterCoverSizeChange(size);
     handleCenterContentSizeChange(size);
+    handleArrowSizeChange(size);
   }, [size, value]);
 
   // you may want to add classes here, therefore they are initiated with with let and in separate variables.
@@ -91,6 +92,28 @@ function handleCenterContentSizeChange(size) {
       name: '--dynamic-center-content-font-size',
       value: centerContentFontSize,
     },
+  ]);
+}
+function handleArrowSizeChange(size) {
+  const formattedSize = formatSize(size);
+  if (!formattedSize) {
+    return null;
+  }
+
+  const arrowTranslate =
+    formattedSize === 'small' ? 35 : formattedSize === 'medium' ? 40 : 59;
+  const arrowLeftBorder =
+    formattedSize === 'small' ? 0.4 : formattedSize === 'medium' ? 0.6 : 0.8;
+  const arrowRightBorder =
+    formattedSize === 'small' ? 0.4 : formattedSize === 'medium' ? 0.6 : 0.8;
+  const arrowBottomBorder =
+    formattedSize === 'small' ? 0.8 : formattedSize === 'medium' ? 1.3 : 1.6;
+
+  dynamicUpdateStyleProperty([
+    { name: '--dynamic-arrow-left-border', value: arrowLeftBorder },
+    { name: '--dynamic-arrow-right-border', value: arrowRightBorder },
+    { name: '--dynamic-arrow-bottom-border', value: arrowBottomBorder },
+    { name: '--dynamic-arrow-translate', value: arrowTranslate },
   ]);
 }
 
@@ -170,7 +193,11 @@ function dynamicUpdateStyleProperty(cssPropsDataArray) {
   cssPropsDataArray?.forEach((cssProp) => {
     document.documentElement.style.setProperty(
       `${cssProp?.name}`,
-      `${cssProp?.value}rem`
+      `${
+        !cssProp.name.includes('translate')
+          ? `${cssProp?.value}rem`
+          : `${cssProp?.value}%`
+      }`
     );
   });
 }

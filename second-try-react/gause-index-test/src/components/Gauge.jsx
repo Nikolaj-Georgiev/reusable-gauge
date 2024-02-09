@@ -12,14 +12,14 @@ export default function Gauge({ value, size }) {
     if (checkedValue) {
       setIndexValue(checkedValue);
     }
-    handleArrowPosition(checkedValue);
+    handleArrowPosition(indexValue);
 
     handleGaugeSizeChange(size);
     handleColoredBorderSizeChange(size);
     handleCenterCoverSizeChange(size);
     handleCenterContentSizeChange(size);
     handleArrowSizeChange(size);
-  }, [size, value]);
+  }, [size, value, indexValue]);
 
   // you may want to add classes here, therefore they are initiated with with let and in separate variables.
   let gaugeSizeCss = `${classes.gauge}`;

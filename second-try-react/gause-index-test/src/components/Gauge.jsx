@@ -8,9 +8,7 @@ export default function Gauge({ value, size }) {
   const [indexValue, setIndexValue] = useState(0);
 
   useEffect(() => {
-    if (Number.isInteger(value) && value >= 0 && value <= 10) {
-      setIndexValue(value);
-    }
+    validateIndex(value, setIndexValue);
 
     handleGaugeSizeChange(size);
     handleColoredBorderSizeChange(size);
@@ -56,6 +54,18 @@ export default function Gauge({ value, size }) {
 /////////////////////////////////////////////
 // This are helper functions and probably will not stay in the component. You may want to bring them from outside, therefore I don't use useCallback for them.
 
+////////////////////////////////////////////
+// functions for changing the position of the arrow and background colors
+
+function validateIndex(value, setIndexValue) {
+  if (Number.isInteger(value) && value >= 0 && value <= 10) {
+    setIndexValue(value);
+  }
+}
+
+/////////////////////////////////////////////
+//function for changing the size of the component UI
+
 function formatSize(size) {
   const formattedSize = size?.toLowerCase().trim();
   if (!['small', 'medium', 'large'].includes(formattedSize)) {
@@ -63,8 +73,6 @@ function formatSize(size) {
   }
   return formattedSize;
 }
-
-function validateIndex() {}
 
 function handleCenterContentSizeChange(size) {
   const formattedSize = formatSize(size);
@@ -94,6 +102,7 @@ function handleCenterContentSizeChange(size) {
     },
   ]);
 }
+
 function handleArrowSizeChange(size) {
   const formattedSize = formatSize(size);
   if (!formattedSize) {

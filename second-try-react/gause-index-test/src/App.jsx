@@ -23,22 +23,26 @@ function App() {
           value={gaugeIndex}
         />
         <form onSubmit={handleSubmit}>
-          <div className='size'>
-            <input
-              type='text'
-              name='size'
-              id='size'
-            />
-            <button>size</button>
+          <div className='input-container'>
+            <div className='size'>
+              <label htmlFor='size'>Size</label>
+
+              <input
+                type='text'
+                name='size'
+                id='size'
+              />
+            </div>
+            <div className='index'>
+              <label htmlFor='index'>Index value</label>
+              <input
+                type='number'
+                id='index'
+                name='index'
+              />
+            </div>
           </div>
-          <div className='index'>
-            <input
-              type='number'
-              id='index'
-              name='index'
-            />
-            <button>index</button>
-          </div>
+          <button>submit</button>
         </form>
       </div>
     </>

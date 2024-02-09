@@ -91,7 +91,7 @@ function handleCenterContentSizeChange(size) {
   const centerContentFontSize =
     formattedSize === 'small' ? 4 : formattedSize === 'medium' ? 6 : 9;
 
-  dynamicUpdateStyleProperty([
+  dynamicUpdateSizeStyleProperty([
     { name: '--dynamic-center-content-width', value: centerContentWidth },
     { name: '--dynamic-center-content-height', value: centerContentHeight },
     { name: '--dynamic-center-content-top', value: centerContentTop },
@@ -118,7 +118,7 @@ function handleArrowSizeChange(size) {
   const arrowBottomBorder =
     formattedSize === 'small' ? 0.8 : formattedSize === 'medium' ? 1.3 : 1.6;
 
-  dynamicUpdateStyleProperty([
+  dynamicUpdateSizeStyleProperty([
     { name: '--dynamic-arrow-left-border', value: arrowLeftBorder },
     { name: '--dynamic-arrow-right-border', value: arrowRightBorder },
     { name: '--dynamic-arrow-bottom-border', value: arrowBottomBorder },
@@ -143,7 +143,7 @@ function handleColoredBorderSizeChange(size) {
   const coloredBorderBorder =
     formattedSize === 'small' ? 0.3 : formattedSize === 'medium' ? 0.4 : 0.5;
 
-  dynamicUpdateStyleProperty([
+  dynamicUpdateSizeStyleProperty([
     { name: '--dynamic-colored-border-width', value: coloredBorderWidth },
     { name: '--dynamic-colored-border-height', value: coloredBorderHeight },
     { name: '--dynamic-colored-border-top', value: coloredBorderTop },
@@ -167,7 +167,7 @@ function handleGaugeSizeChange(size) {
   const gaugeLeft =
     formattedSize === 'small' ? 10 : formattedSize === 'medium' ? 7.5 : 5;
 
-  dynamicUpdateStyleProperty([
+  dynamicUpdateSizeStyleProperty([
     { name: '--dynamic-gauge-width', value: gaugeWidth },
     { name: '--dynamic-gauge-height', value: gaugeHeight },
     { name: '--dynamic-gauge-top', value: gaugeTop },
@@ -190,7 +190,7 @@ function handleCenterCoverSizeChange(size) {
   const centerCoverLeft =
     formattedSize === 'small' ? 10.5 : formattedSize === 'medium' ? 8 : 5.5;
 
-  dynamicUpdateStyleProperty([
+  dynamicUpdateSizeStyleProperty([
     { name: '--dynamic-center-cover-width', value: centerCoverWidth },
     { name: '--dynamic-center-cover-height', value: centerCoverHeight },
     { name: '--dynamic-center-cover-top', value: centerCoverTop },
@@ -198,7 +198,7 @@ function handleCenterCoverSizeChange(size) {
   ]);
 }
 
-function dynamicUpdateStyleProperty(cssPropsDataArray) {
+function dynamicUpdateSizeStyleProperty(cssPropsDataArray) {
   cssPropsDataArray?.forEach((cssProp) => {
     document.documentElement.style.setProperty(
       `${cssProp?.name}`,

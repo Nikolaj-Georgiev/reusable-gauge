@@ -140,13 +140,13 @@ function handleArrowSizeChange(size) {
   }
 
   const arrowTranslate =
-    formattedSize === 'small' ? 35 : formattedSize === 'medium' ? 40 : 59;
+    formattedSize === 'small' ? 15 : formattedSize === 'medium' ? 10 : 10;
   const arrowLeftBorder =
-    formattedSize === 'small' ? 0.4 : formattedSize === 'medium' ? 0.6 : 0.8;
+    formattedSize === 'small' ? 0.4 : formattedSize === 'medium' ? 0.7 : 1;
   const arrowRightBorder =
-    formattedSize === 'small' ? 0.4 : formattedSize === 'medium' ? 0.6 : 0.8;
+    formattedSize === 'small' ? 0.4 : formattedSize === 'medium' ? 0.7 : 1;
   const arrowBottomBorder =
-    formattedSize === 'small' ? 0.8 : formattedSize === 'medium' ? 1.3 : 1.6;
+    formattedSize === 'small' ? 0.8 : formattedSize === 'medium' ? 1.3 : 1.8;
 
   dynamicUpdateSizeStyleProperty([
     { name: '--dynamic-arrow-left-border', value: arrowLeftBorder },

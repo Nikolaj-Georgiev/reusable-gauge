@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+
 import { useState, useEffect } from 'react';
 
 import classes from './Gauge.module.css';
@@ -88,6 +89,11 @@ function handlePositionColors(index) {
   );
   document.documentElement.style.setProperty(
     '--dynamic-arrow-color',
+    `var(--gauge-${index})`
+  );
+
+  document.documentElement.style.setProperty(
+    `--dynamic-piece-${index}-background`,
     `var(--gauge-${index})`
   );
 }

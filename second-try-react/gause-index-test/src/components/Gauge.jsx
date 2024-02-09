@@ -163,15 +163,15 @@ function handleColoredBorderSizeChange(size) {
   }
 
   const coloredBorderWidth =
-    formattedSize === 'small' ? 7 : formattedSize === 'medium' ? 11 : 15;
+    formattedSize === 'small' ? 6.5 : formattedSize === 'medium' ? 10 : 13;
   const coloredBorderHeight =
-    formattedSize === 'small' ? 7 : formattedSize === 'medium' ? 11 : 15;
+    formattedSize === 'small' ? 6.5 : formattedSize === 'medium' ? 10 : 13;
   const coloredBorderTop =
-    formattedSize === 'small' ? 11.5 : formattedSize === 'medium' ? 9.5 : 7.5;
+    formattedSize === 'small' ? 11.8 : formattedSize === 'medium' ? 10 : 8.5;
   const coloredBorderLeft =
-    formattedSize === 'small' ? 11.5 : formattedSize === 'medium' ? 9.5 : 7.5;
+    formattedSize === 'small' ? 11.8 : formattedSize === 'medium' ? 10 : 8.5;
   const coloredBorderBorder =
-    formattedSize === 'small' ? 0.3 : formattedSize === 'medium' ? 0.4 : 0.5;
+    formattedSize === 'small' ? 0.32 : formattedSize === 'medium' ? 0.46 : 0.64;
 
   dynamicUpdateSizeStyleProperty([
     { name: '--dynamic-colored-border-width', value: coloredBorderWidth },

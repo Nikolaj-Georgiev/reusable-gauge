@@ -65,9 +65,6 @@ export default function GaugeRevised({ value, size }) {
   );
 }
 
-/////////////////////////////////////////////
-// This are helper functions and probably will not stay in the component. You may want to bring them from outside, therefore I don't use useCallback for them.
-
 function updateStyles(index, size) {
   updateArrowPosition(index);
   updatePositionColors(index);

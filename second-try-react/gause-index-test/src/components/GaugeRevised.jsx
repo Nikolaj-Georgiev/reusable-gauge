@@ -150,13 +150,20 @@ const masterSizesData = [
 ];
 
 function updateSizeStyleProperties(cssPropsDataArray, size) {
+  const formattedSize = formatSize(size);
+  if (!formattedSize) {
+    return null;
+  }
+
+  const currentSizeValue =
+    formattedSize === 'small' ? 0 : formattedSize === 'medium' ? 1 : 2;
   cssPropsDataArray?.forEach((cssProp) => {
     document.documentElement.style.setProperty(
       `${cssProp?.name}`,
       `${
         !cssProp.name.includes('translate')
-          ? `${cssProp?.value}rem`
-          : `${cssProp?.value}%`
+          ? `${cssProp?.value[currentSizeValue]}rem`
+          : `${cssProp?.value[currentSizeValue]}%`
       }`
     );
   });

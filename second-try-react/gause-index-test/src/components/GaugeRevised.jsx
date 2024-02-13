@@ -42,23 +42,17 @@ export default function GaugeRevised({ value, size }) {
     updateStyles(indexValue, size);
   }, [size, value, indexValue]);
 
-  // you may want to add classes here, therefore they are initiated with with let and in separate variables.
-  let gaugeSizeCss = `${classes.gauge}`;
-  let centerCoverCss = `${classes['center-cover']}`;
-  let coloredBorderCss = `${classes['colored-border']}`;
-  let centerContentCss = `${classes['center-content']}`;
-
   return (
     <>
       <div className={classes.container}>
-        <div className={centerContentCss}>
+        <div className={classes['center-content']}>
           <p>{indexValue}</p>
         </div>
-        <div className={centerCoverCss}></div>
-        <div className={`${coloredBorderCss} index-0`}>
+        <div className={classes['center-cover']}></div>
+        <div className={classes['colored-border']}>
           <div className={classes.arrow}></div>
         </div>
-        <div className={gaugeSizeCss}>
+        <div className={classes.gauge}>
           {Array.from({ length: 11 }).map((_, i) => (
             <div
               key={i}
@@ -124,7 +118,7 @@ function updatePositionColors(index) {
 /////////////////////////////////////////////
 //function for changing the size of the component UI
 
-// this function can be omitted if you receive are sure that you are going to receive 'small', 'medium' or 'large'.
+// this function can be omitted if you are sure that you are going to receive 'small', 'medium' or 'large'.
 function formatSize(size) {
   const formattedSize = size?.toLowerCase().trim();
   if (!['small', 'medium', 'large'].includes(formattedSize)) {

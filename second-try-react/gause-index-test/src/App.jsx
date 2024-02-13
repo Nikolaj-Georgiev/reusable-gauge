@@ -1,6 +1,7 @@
 // import ComponentName from './components/ComponentName';
-import Gauge from './components/Gauge';
+// import Gauge from './components/Gauge';
 import { useState } from 'react';
+import GaugeRevised from './components/GaugeRevised';
 
 function App() {
   const [sizeValue, setSizeValue] = useState('');
@@ -18,7 +19,7 @@ function App() {
   return (
     <>
       <div className='container'>
-        <Gauge
+        <GaugeRevised
           size={sizeValue}
           value={gaugeIndex}
         />

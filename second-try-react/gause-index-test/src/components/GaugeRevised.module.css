@@ -1,0 +1,249 @@
+:root {
+  --gauge-bg: #141414;
+  --gauge-0: #11c762;
+  --gauge-1: #3abf4d;
+  --gauge-2: #64b73a;
+  --gauge-3: #8daf27;
+  --gauge-4: #b5a714;
+  --gauge-5: #dda001;
+  --gauge-6: #e38301;
+  --gauge-7: #ea6601;
+  --gauge-8: #f04901;
+  --gauge-9: #f62b01;
+  --gauge-10: #fd0e01;
+
+  --gauge-00: #12522e;
+  --gauge-01: #204e27;
+  --gauge-02: #2e4c20;
+  --gauge-03: #3d491a;
+  --gauge-04: #4b4614;
+  --gauge-05: #594310;
+  --gauge-06: #5b390f;
+  --gauge-07: #5f2e0f;
+  --gauge-08: #61250f;
+  --gauge-09: #631c0f;
+  --gauge-010: #65120f;
+
+  --colored-border-width: 6.5rem;
+  --colored-border-height: 6.5rem;
+  --colored-border-top: 11.8rem;
+  --colored-border-left: 11.8rem;
+  --colored-border-border: 0.3rem;
+  --colored-border-color: var(--gauge-0);
+
+  --gauge-width: 10rem;
+  --gauge-height: 10rem;
+  --gauge-top: 10rem;
+  --gauge-left: 10rem;
+
+  --center-cover-width: 9rem;
+  --center-cover-height: 9rem;
+  --center-cover-top: 10.5rem;
+  --center-cover-left: 10.5rem;
+
+  --center-content-width: 4rem;
+  --center-content-height: 4rem;
+  --center-content-top: 13rem;
+  --center-content-left: 13rem;
+  --center-content-font-size: 3.2rem;
+
+  --piece-0-background: var(--gauge-00);
+  --piece-1-background: var(--gauge-01);
+  --piece-2-background: var(--gauge-02);
+  --piece-3-background: var(--gauge-03);
+  --piece-4-background: var(--gauge-04);
+  --piece-5-background: var(--gauge-05);
+  --piece-6-background: var(--gauge-06);
+  --piece-7-background: var(--gauge-07);
+  --piece-8-background: var(--gauge-08);
+  --piece-9-background: var(--gauge-09);
+  --piece-10-background: var(--gauge-010);
+
+  --arrow-position: -82deg;
+
+  --arrow-left-border: 0.4rem;
+  --arrow-right-border: 0.4rem;
+  --arrow-bottom-border: 0.8rem;
+  --arrow-translate: 35%;
+  --arrow-color: var(--gauge-0);
+}
+
+.container {
+  width: 30rem;
+  height: 30rem;
+  margin: 5rem auto;
+  position: relative;
+  transition: all 0.4s;
+}
+
+.gauge {
+  margin: auto;
+  position: absolute;
+  width: var(--gauge-width);
+  height: var(--gauge-height);
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--gauge-bg);
+  transform: rotate(90deg);
+  top: var(--gauge-top);
+  left: var(--gauge-left);
+}
+
+/* Center cover for gauge - background and sizing */
+
+.center-cover {
+  width: var(--center-cover-width);
+  height: var(--center-cover-height);
+  position: absolute;
+  top: var(--center-cover-top);
+  left: var(--center-cover-left);
+  background-color: var(--gauge-bg);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.colored-border {
+  width: var(--colored-border-width);
+  height: var(--colored-border-height);
+  position: absolute;
+  top: var(--colored-border-top);
+  left: var(--colored-border-left);
+  border: var(--colored-border-border) solid var(--colored-border-color);
+  transition: var(--colored-border-color) 0.8s ease;
+  border-radius: 50%;
+  transform: rotate(var(--arrow-position));
+  transition: transform 0.8s ease;
+  z-index: 3;
+}
+
+.arrow {
+  width: 0rem;
+  height: 0rem;
+  position: absolute;
+  transform: translate(0, var(--arrow-translate));
+  border-left: var(--arrow-left-border) solid transparent;
+  border-right: var(--arrow-right-border) solid transparent;
+  border-bottom: var(--arrow-bottom-border) solid var(--arrow-color);
+  rotate: -45deg;
+  transition: var(--arrow-color) 0.8s ease;
+}
+
+.center-content {
+  background-color: #141414;
+  width: var(--center-content-width);
+  height: var(--center-content-height);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: var(--center-content-top);
+  left: var(--center-content-left);
+  border-radius: 50%;
+  z-index: 4;
+}
+
+.center-content > p {
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
+  font-size: var(--center-content-font-size);
+  font-weight: 400;
+}
+
+/* Colors and structure of the gauge */
+.piece {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  clip-path: polygon(50% 50%, 105% 95%, 100% 100%, 75% 100%);
+  transition: all 0.5s;
+}
+
+.piece:before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  left: -50%;
+  top: -50%;
+  border-radius: 50%;
+  clip-path: polygon(50% 100%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.piece:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.piece:nth-child(2) {
+  transform: rotate(25.71deg);
+}
+
+.piece:nth-child(3) {
+  transform: rotate(51.42deg);
+}
+
+.piece:nth-child(4) {
+  transform: rotate(77.13deg);
+}
+
+.piece:nth-child(5) {
+  transform: rotate(102.84deg);
+}
+
+.piece:nth-child(6) {
+  transform: rotate(128.55deg);
+}
+
+.piece:nth-child(7) {
+  transform: rotate(154.26deg);
+}
+
+.piece:nth-child(8) {
+  transform: rotate(179.97deg);
+}
+
+.piece:nth-child(9) {
+  transform: rotate(205.68deg);
+}
+
+.piece:nth-child(10) {
+  transform: rotate(231.39deg);
+}
+
+.piece:nth-child(11) {
+  transform: rotate(257.1deg);
+}
+
+.piece--0 {
+  background-color: var(--piece-0-background);
+}
+.piece--1 {
+  background-color: var(--piece-1-background);
+}
+.piece--2 {
+  background-color: var(--piece-2-background);
+}
+.piece--3 {
+  background-color: var(--piece-3-background);
+}
+.piece--4 {
+  background-color: var(--piece-4-background);
+}
+.piece--5 {
+  background-color: var(--piece-5-background);
+}
+.piece--6 {
+  background-color: var(--piece-6-background);
+}
+.piece--7 {
+  background-color: var(--piece-7-background);
+}
+.piece--8 {
+  background-color: var(--piece-8-background);
+}
+.piece--9 {
+  background-color: var(--piece-9-background);
+}
+.piece--10 {
+  background-color: var(--piece-10-background);
+}

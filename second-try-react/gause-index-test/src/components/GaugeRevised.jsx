@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 
 import classes from './GaugeRevised.module.css';
 
-export default function Gauge({ value, size }) {
+export default function GaugeRevised({ value, size }) {
   const [indexValue, setIndexValue] = useState(0);
 
   useEffect(() => {
@@ -33,17 +33,6 @@ export default function Gauge({ value, size }) {
           <div className={classes.arrow}></div>
         </div>
         <div className={gaugeSizeCss}>
-          {/* <div className={`${classes.piece} ${classes['piece--0']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--1']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--2']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--3']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--4']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--5']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--6']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--7']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--8']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--9']}`}></div>
-          <div className={`${classes.piece} ${classes['piece--10']}`}></div> */}
           {Array.from({ length: 11 }).map((_, i) => (
             <div
               key={i}
@@ -83,7 +72,7 @@ function validateIndex(value) {
 function dynamicUpdatePositionProperty(value) {
   const positions = [-82, -58, -32, -7, 19, 45, 70, 96, 122, 147, 172];
   document.documentElement.style.setProperty(
-    '--dynamic-arrow-position',
+    '--arrow-position',
     `${positions[value]}deg`
   );
 }
@@ -94,17 +83,17 @@ function handleArrowPosition(index) {
 
 function handlePositionColors(index) {
   document.documentElement.style.setProperty(
-    '--dynamic-colored-border-color',
+    '--colored-border-color',
     `var(--gauge-${index})`
   );
   document.documentElement.style.setProperty(
-    '--dynamic-arrow-color',
+    '--arrow-color',
     `var(--gauge-${index})`
   );
 
   Array.from({ length: 11 }).forEach((_, i) =>
     document.documentElement.style.setProperty(
-      `--dynamic-piece-${i}-background`,
+      `--piece-${i}-background`,
       `var(--gauge-${i === index ? i : `0${i}`})`
     )
   );
@@ -113,6 +102,7 @@ function handlePositionColors(index) {
 /////////////////////////////////////////////
 //function for changing the size of the component UI
 
+// this function can be omitted if you receive are sure that you are going to receive 'small', 'medium' or 'large'.
 function formatSize(size) {
   const formattedSize = size?.toLowerCase().trim();
   if (!['small', 'medium', 'large'].includes(formattedSize)) {
@@ -122,6 +112,44 @@ function formatSize(size) {
 }
 
 function dynamicUpdateSizeStyleProperty(cssPropsDataArray) {
+  cssPropsDataArray?.forEach((cssProp) => {
+    document.documentElement.style.setProperty(
+      `${cssProp?.name}`,
+      `${
+        !cssProp.name.includes('translate')
+          ? `${cssProp?.value}rem`
+          : `${cssProp?.value}%`
+      }`
+    );
+  });
+}
+
+const masterSizesData = [
+  { name: '--center-content-width', value: [4, 6, 8] },
+  { name: '--center-content-height', value: [4, 6, 8] },
+  { name: '--center-content-top', value: [13, 12, 11] },
+  { name: '--center-content-left', value: [13, 12, 11] },
+  { name: '--center-content-font-size', value: [3.2, 5, 7] },
+  { name: '--arrow-translate', value: [15, 10, 10] },
+  { name: '--arrow-left-border', value: [0.4, 0.7, 1] },
+  { name: '--arrow-right-border', value: [0.4, 0.7, 1] },
+  { name: '--arrow-bottom-border', value: [0.8, 1.3, 1.8] },
+  { name: '--colored-border-width', value: [6.5, 10, 13] },
+  { name: '--colored-border-height', value: [6.5, 10, 13] },
+  { name: '--colored-border-top', value: [11.8, 10, 8.5] },
+  { name: '--colored-border-left', value: [11.8, 10, 8.5] },
+  { name: '--colored-border-border', value: [0.32, 0.46, 0.64] },
+  { name: '--gauge-width', value: [10, 15, 20] },
+  { name: '--gauge-height', value: [10, 15, 20] },
+  { name: '--gauge-top', value: [10, 7.5, 5] },
+  { name: '--gauge-left', value: [10, 7.5, 5] },
+  { name: '--center-cover-width', value: [9, 13.6, 18] },
+  { name: '--center-cover-height', value: [9, 13.6, 18] },
+  { name: '--center-cover-top', value: [10.5, 8.2, 6] },
+  { name: '--center-cover-left', value: [10.5, 8.2, 6] },
+];
+
+function updateSizeStyleProperties(cssPropsDataArray, size) {
   cssPropsDataArray?.forEach((cssProp) => {
     document.documentElement.style.setProperty(
       `${cssProp?.name}`,
@@ -152,12 +180,12 @@ function handleCenterContentSizeChange(size) {
     formattedSize === 'small' ? 3.2 : formattedSize === 'medium' ? 5 : 7;
 
   dynamicUpdateSizeStyleProperty([
-    { name: '--dynamic-center-content-width', value: centerContentWidth },
-    { name: '--dynamic-center-content-height', value: centerContentHeight },
-    { name: '--dynamic-center-content-top', value: centerContentTop },
-    { name: '--dynamic-center-content-left', value: centerContentLeft },
+    { name: '--center-content-width', value: centerContentWidth },
+    { name: '--center-content-height', value: centerContentHeight },
+    { name: '--center-content-top', value: centerContentTop },
+    { name: '--center-content-left', value: centerContentLeft },
     {
-      name: '--dynamic-center-content-font-size',
+      name: '--center-content-font-size',
       value: centerContentFontSize,
     },
   ]);
@@ -179,10 +207,10 @@ function handleArrowSizeChange(size) {
     formattedSize === 'small' ? 0.8 : formattedSize === 'medium' ? 1.3 : 1.8;
 
   dynamicUpdateSizeStyleProperty([
-    { name: '--dynamic-arrow-left-border', value: arrowLeftBorder },
-    { name: '--dynamic-arrow-right-border', value: arrowRightBorder },
-    { name: '--dynamic-arrow-bottom-border', value: arrowBottomBorder },
-    { name: '--dynamic-arrow-translate', value: arrowTranslate },
+    { name: '--arrow-left-border', value: arrowLeftBorder },
+    { name: '--arrow-right-border', value: arrowRightBorder },
+    { name: '--arrow-bottom-border', value: arrowBottomBorder },
+    { name: '--arrow-translate', value: arrowTranslate },
   ]);
 }
 
@@ -204,11 +232,11 @@ function handleColoredBorderSizeChange(size) {
     formattedSize === 'small' ? 0.32 : formattedSize === 'medium' ? 0.46 : 0.64;
 
   dynamicUpdateSizeStyleProperty([
-    { name: '--dynamic-colored-border-width', value: coloredBorderWidth },
-    { name: '--dynamic-colored-border-height', value: coloredBorderHeight },
-    { name: '--dynamic-colored-border-top', value: coloredBorderTop },
-    { name: '--dynamic-colored-border-left', value: coloredBorderLeft },
-    { name: '--dynamic-colored-border-border', value: coloredBorderBorder },
+    { name: '--colored-border-width', value: coloredBorderWidth },
+    { name: '--colored-border-height', value: coloredBorderHeight },
+    { name: '--colored-border-top', value: coloredBorderTop },
+    { name: '--colored-border-left', value: coloredBorderLeft },
+    { name: '--colored-border-border', value: coloredBorderBorder },
   ]);
 }
 
@@ -228,10 +256,10 @@ function handleGaugeSizeChange(size) {
     formattedSize === 'small' ? 10 : formattedSize === 'medium' ? 7.5 : 5;
 
   dynamicUpdateSizeStyleProperty([
-    { name: '--dynamic-gauge-width', value: gaugeWidth },
-    { name: '--dynamic-gauge-height', value: gaugeHeight },
-    { name: '--dynamic-gauge-top', value: gaugeTop },
-    { name: '--dynamic-gauge-left', value: gaugeLeft },
+    { name: '--gauge-width', value: gaugeWidth },
+    { name: '--gauge-height', value: gaugeHeight },
+    { name: '--gauge-top', value: gaugeTop },
+    { name: '--gauge-left', value: gaugeLeft },
   ]);
 }
 
@@ -251,9 +279,9 @@ function handleCenterCoverSizeChange(size) {
     formattedSize === 'small' ? 10.5 : formattedSize === 'medium' ? 8.2 : 6;
 
   dynamicUpdateSizeStyleProperty([
-    { name: '--dynamic-center-cover-width', value: centerCoverWidth },
-    { name: '--dynamic-center-cover-height', value: centerCoverHeight },
-    { name: '--dynamic-center-cover-top', value: centerCoverTop },
-    { name: '--dynamic-center-cover-left', value: centerCoverLeft },
+    { name: '--center-cover-width', value: centerCoverWidth },
+    { name: '--center-cover-height', value: centerCoverHeight },
+    { name: '--center-cover-top', value: centerCoverTop },
+    { name: '--center-cover-left', value: centerCoverLeft },
   ]);
 }

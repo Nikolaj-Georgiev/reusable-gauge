@@ -73,7 +73,7 @@
   height: 30rem;
   margin: 5rem auto;
   position: relative;
-  transition: all 0.4s;
+  transition: all 0.4s ease;
 }
 
 .gauge {
@@ -87,6 +87,7 @@
   transform: rotate(90deg);
   top: var(--gauge-top);
   left: var(--gauge-left);
+  /* transition: all 0.4s ease; -> this changes the animation effect */
 }
 
 /* Center cover for gauge - background and sizing */

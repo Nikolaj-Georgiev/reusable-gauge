@@ -81,9 +81,9 @@ function App() {
                 id='size'
                 name='size'
               >
-                <option value='small'>small</option>
-                <option value='medium'>medium</option>
                 <option value='large'>large</option>
+                <option value='medium'>medium</option>
+                <option value='small'>small</option>
               </select>
             </div>
             <div className='index'>

@@ -9,6 +9,35 @@ html {
   background-color: #141414;
 }
 
+.hero-container {
+  padding: 4rem 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row-1 img {
+  max-width: 23rem;
+  max-height: 19.6rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow: hidden;
+  background-size: cover;
+}
+.row-2 img {
+  max-width: 23rem;
+  max-height: 19.6rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow: hidden;
+  background-size: cover;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -79,4 +108,42 @@ button {
 
 button:hover {
   color: #f6f6f6;
+}
+
+@media only screen and (max-width: 78.75em) {
+  html {
+    font-size: 56.25%;
+  }
+  .hero-container {
+    padding: 3rem 6rem;
+  }
+  .row-1 img {
+    max-width: 16rem;
+    max-height: 12.6rem;
+  }
+  .row-2 img {
+    max-width: 16rem;
+    max-height: 12.6rem;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+  .hero-container {
+    padding: 2rem 4rem;
+  }
+  .row-1 img {
+    max-width: 14rem;
+    max-height: 10.6rem;
+  }
+  .row-2 img {
+    max-width: 14rem;
+    max-height: 10.6rem;
+  }
+}
+@media only screen and (min-width: 112.5em) {
+  html {
+    font-size: 75%;
+  }
 }
